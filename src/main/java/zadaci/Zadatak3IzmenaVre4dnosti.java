@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import model.Brod;
 import model.Kontejner;
 
@@ -30,6 +31,19 @@ public class Zadatak3IzmenaVre4dnosti {
 
             brodDao= DaoManager.createDao(connectionSource,Brod.class);
             kontejnerDao=DaoManager.createDao(connectionSource,Kontejner.class);
+
+
+
+            TableUtils.clearTable(connectionSource, Brod.class);
+            TableUtils.clearTable(connectionSource, Kontejner.class);
+
+
+            Brod b1 = new Brod("Brod1","Transporter1");
+            brodDao.create(b1);
+
+            Kontejner k3=new Kontejner("KP3","Morski proizvodi",200.7);
+            k3.setBrod(b1);
+            kontejnerDao.create(k3);
 
             List<Kontejner> kontejner = kontejnerDao.queryForAll();
             for (Kontejner k : kontejner)

@@ -28,6 +28,21 @@ public class Zadatak4BrisanjeVrednosti {
             brodDao= DaoManager.createDao(connectionSource,Brod.class);
             kontejnerDao=DaoManager.createDao(connectionSource,Kontejner.class);
 
+
+            Brod b1 = new Brod("Brod1","Transporter1");
+            brodDao.create(b1);
+
+            Kontejner k1=new Kontejner("KP1","Namestaj",100.0);
+            k1.setBrod(b1);
+            kontejnerDao.create(k1);
+
+
+            Kontejner k2=new Kontejner("KP2","Banane",1005);
+            k2.setBrod(b1);
+            kontejnerDao.create(k2);
+
+
+
             Kontejner ZaBrisanje = kontejnerDao.queryForId(k1.getId());
             kontejnerDao.delete(ZaBrisanje);
 

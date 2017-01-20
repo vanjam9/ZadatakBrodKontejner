@@ -25,7 +25,7 @@ public class Kontejner {
     @DatabaseField(columnName = "tezina")
      private  double tezina;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true,foreignAutoRefresh = true)
     private Brod brod;
 
 
@@ -33,11 +33,22 @@ public class Kontejner {
 
     }
 
-    public Kontejner(int id, String oznaka, String opis, double tezina, Brod brod) {
+    public Kontejner( String oznaka, String opis, double tezina) {
 
         this.oznaka = oznaka;
         this.opis = opis;
         this.tezina = tezina;
+
+    }
+
+    public Kontejner(String oznaka, String opis, double tezina, Brod brod) {
+        this.oznaka = oznaka;
+        this.opis = opis;
+        this.tezina = tezina;
+        this.brod = brod;
+    }
+
+    public Kontejner(Brod brod) {
         this.brod = brod;
     }
 

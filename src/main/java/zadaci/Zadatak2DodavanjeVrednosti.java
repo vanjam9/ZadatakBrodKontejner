@@ -43,7 +43,7 @@ kontejnerDao=DaoManager.createDao(connectionSource,Kontejner.class);
             Brod b2 = new Brod("Brod2","Transporter2");
             brodDao.create(b2);
 
-            Kontejner k1=new Kontejner("KP1","Namestaj",100);
+            Kontejner k1=new Kontejner("KP1","Namestaj",100.0);
             k1.setBrod(b1);
             kontejnerDao.create(k1);
 
